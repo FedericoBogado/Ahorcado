@@ -2,11 +2,16 @@ import random
 
 
 def read():
+    list = []
     with open("./Data.txt", "r", encoding="UTF-8") as f:
-        pass
+        for palabras in f:
+            list.append(palabras)
+    palabra = random.choices(list)
+    palabra = "".join(palabra)
+    print(palabra)
 
 
-def consultar_letra():
+'''def consultar_letra():
     pass
 
 
@@ -19,7 +24,7 @@ def menu():
 
 
 def palabra():
-    pass
+    pass'''
 
 
 def vidas():
@@ -27,7 +32,7 @@ def vidas():
 
 
 def run():
-    pass
+    read()
 
 
 if __name__ == "__main__":
