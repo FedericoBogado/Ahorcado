@@ -3,16 +3,37 @@ import random
 
 def read():
     list_pal = []
-    a,b = 'áéíóúüñ','aeiouun'
     with open("./Data.txt", "r", encoding="UTF-8") as f:
         for palabras in f:
             list_pal.append(palabras)
     palabra_ram = random.choices(list_pal)
     palabra_ram = "".join(palabra_ram)
     palabra_ram = palabra_ram.lower()
+    palabra_ram = switch(palabra_ram)
     palabra = list(palabra_ram.strip(" "))
     palabra.remove("\n")
-    return (palabra) 
+    return palabra
+
+
+def switch(palabra_ram):
+    i = 0
+    for letra in palabra_ram:
+            i = i + 1
+            if letra == "á":
+                palabra_ram = palabra_ram[:i-1] + "a" + palabra_ram[i:]
+            elif letra == "é":
+                palabra_ram = palabra_ram[:i-1] + "e" + palabra_ram[i:]
+            elif letra == "í":
+                palabra_ram = palabra_ram[:i-1] + "i" + palabra_ram[i:]
+            elif letra == "ó":
+                palabra_ram = palabra_ram[:i-1] + "o" + palabra_ram[i:]
+            elif letra == "ú":
+                palabra_ram = palabra_ram[:i-1] + "u" + palabra_ram[i:]
+            elif letra == "ü":
+                palabra_ram = palabra_ram[:i-1] + "u" + palabra_ram[i:]
+            else:
+                pass
+    return palabra_ram
 
 
 def mecanica_principal(palabra, palabra_list):
@@ -55,7 +76,7 @@ def menu(palabra, palabra_list):
 def run():
     palabra_list = read()    
     palabra = "".join(palabra_list)
-    print(palabra)
+    print(palabra_list)
     menu(palabra, palabra_list)
 
 
