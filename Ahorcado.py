@@ -36,12 +36,15 @@ def switch(palabra_ram):
     return palabra_ram
 
 
-def mecanica_principal(palabra, palabra_list):
-    vidas = 3
+def mecanica_principal(palabra, palabra_list, imagenes):
+    intentos = 0
     espacios = len(palabra_list)
     palabra_jug = "_" * espacios
-    while vidas > 0:
+    while intentos < 6:
+        print(imagenes[intentos] + "\n")
         letra_jug = input("\nIngrese una letra: ").lower()
+        assert letra_jug.isalpha(), "Tiene que ser una letra culiado"
+        assert len(letra_jug) == 1, "Una sola letra culiado"
         i = 0
         acerto = False
         for letra in palabra_list:
@@ -52,23 +55,25 @@ def mecanica_principal(palabra, palabra_list):
             else:
                 pass
         if acerto == False:
-            vidas = vidas - 1
+            intentos = intentos + 1
         elif palabra == palabra_jug:
             print("\nGanaste wachin\n")
             exit()
         else:
             pass
         print("\n" + palabra_jug)
+    if intentos == 6:
+        print("\n\nPerdiste wachin")
+        print(imagenes[intentos] + "\n")
 
 
-'''def animaciones():
-    pass'''
 
-
-def menu(palabra, palabra_list):
+def menu(palabra, palabra_list, imagenes):
+    opc = ("1", "2")
     dec = input("1] Jugar\n2] Salir\n\n")
+    assert dec in opc, "Tiene que ser una de las opciones culiado"
     if dec == "1":
-        mecanica_principal(palabra, palabra_list)
+        mecanica_principal(palabra, palabra_list, imagenes)
     elif dec == "2":
         exit()
 
@@ -76,8 +81,106 @@ def menu(palabra, palabra_list):
 def run():
     palabra_list = read()    
     palabra = "".join(palabra_list)
+    imagenes = ['''
+   +---+
+
+   |   |
+
+       |
+
+       |
+
+       |
+
+       |
+
+ =========''', '''
+
+   +---+
+
+   |   |
+
+   O   |
+
+       |
+
+       |
+
+       |
+
+ =========''', '''
+
+   +---+
+
+   |   |
+
+   O   |
+
+   |   |
+
+       |
+
+       |
+
+ =========''', '''
+
+   +---+
+
+   |   |
+
+   O   |
+
+  /|   |
+
+       |
+
+       |
+
+ =========''', '''
+
+   +---+
+
+   |   |
+
+   O   |
+
+  /|\  |
+
+       |
+
+       |
+
+ =========''', '''
+
+   +---+
+
+   |   |
+
+   O   |
+
+  /|\  |
+
+  /    |
+
+       |
+
+ =========''', '''
+
+   +---+
+
+   |   |
+
+   O   |
+
+  /|\  |
+
+  / \  |
+
+       |
+
+ =========''']
     print(palabra_list)
-    menu(palabra, palabra_list)
+    menu(palabra, palabra_list, imagenes)
 
 
 if __name__ == "__main__":
