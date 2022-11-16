@@ -65,6 +65,7 @@ def mecanica_principal(palabra, palabra_list, imagenes):
     if intentos == 6:
         print("\n\nPerdiste wachin")
         print(imagenes[intentos] + "\n")
+        print("AHORCADO!\n")
 
 
 
