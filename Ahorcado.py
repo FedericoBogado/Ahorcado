@@ -64,7 +64,7 @@ def mecanica_principal(palabra, palabra_list, imagenes):
             intentos = intentos + 1
         elif palabra == palabra_jug:
             print("\nGanaste wachin\n")
-            print(letras)
+            print("La palabra era: " + palabra + "\n")
             exit()
         else:
             pass
@@ -73,12 +73,13 @@ def mecanica_principal(palabra, palabra_list, imagenes):
         print("\n\nPerdiste wachin")
         print(imagenes[intentos] + "\n")
         print("AHORCADO!\n")
+        print("La palabra era: " + palabra + "\n")
 
 
 
 def menu(palabra, palabra_list, imagenes):
     opc = ("1", "2")
-    dec = input("1] Jugar\n2] Salir\n\n")
+    dec = input("\n1] Jugar\n2] Salir\n\n")
     assert dec in opc, "Tiene que ser una de las opciones culiado"
     if dec == "1":
         mecanica_principal(palabra, palabra_list, imagenes)
@@ -187,7 +188,7 @@ def run():
        |
 
  =========''']
-    print(palabra_list)
+    #print(palabra_list)
     menu(palabra, palabra_list, imagenes)
 
 
