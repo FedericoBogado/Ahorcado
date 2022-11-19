@@ -40,11 +40,17 @@ def mecanica_principal(palabra, palabra_list, imagenes):
     intentos = 0
     espacios = len(palabra_list)
     palabra_jug = "_" * espacios
+    letras = []
     while intentos < 6:
         print(imagenes[intentos] + "\n")
         letra_jug = input("\nIngrese una letra: ").lower()
         assert letra_jug.isalpha(), "Tiene que ser una letra culiado"
         assert len(letra_jug) == 1, "Una sola letra culiado"
+        if letra_jug in letras:
+            print("\n!!!YA USASTE ESA LETRA WACHIN!!!")
+        else:
+            pass
+        letras.append(letra_jug)
         i = 0
         acerto = False
         for letra in palabra_list:
@@ -58,6 +64,7 @@ def mecanica_principal(palabra, palabra_list, imagenes):
             intentos = intentos + 1
         elif palabra == palabra_jug:
             print("\nGanaste wachin\n")
+            print(letras)
             exit()
         else:
             pass
