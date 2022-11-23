@@ -36,21 +36,30 @@ def switch(palabra_ram):
     return palabra_ram
 
 
+def autentificacion_letra(letras):
+    while True:
+        letra = input("\nIngrese una letra: ").lower()
+        assert letra.isalpha(), "Tiene que ser una letra wachin"
+        if len(letra) != 1:
+            print("\nTiene que ser una sola letra wachin")
+        elif letra in letras:
+            print("\nYA USASTE ESA LETRA WACHIN!!!")
+        elif len(letra) == 1 and letra not in letras:
+            letras.append(letra)
+            return letra
+        else:
+            pass
+
+
 def mecanica_principal(palabra, palabra_list, imagenes):
+    letras = []
     intentos = 0
     espacios = len(palabra_list)
     palabra_jug = "_" * espacios
-    letras = []
     while intentos < 6:
+        print("\n" + palabra_jug)
         print(imagenes[intentos] + "\n")
-        letra_jug = input("\nIngrese una letra: ").lower()
-        assert letra_jug.isalpha(), "Tiene que ser una letra culiado"
-        assert len(letra_jug) == 1, "Una sola letra culiado"
-        if letra_jug in letras:
-            print("\n!!!YA USASTE ESA LETRA WACHIN!!!")
-        else:
-            pass
-        letras.append(letra_jug)
+        letra_jug = autentificacion_letra(letras)
         i = 0
         acerto = False
         for letra in palabra_list:
@@ -68,7 +77,6 @@ def mecanica_principal(palabra, palabra_list, imagenes):
             exit()
         else:
             pass
-        print("\n" + palabra_jug)
     if intentos == 6:
         print("\n\nPerdiste wachin")
         print(imagenes[intentos] + "\n")
@@ -76,15 +84,18 @@ def mecanica_principal(palabra, palabra_list, imagenes):
         print("La palabra era: " + palabra + "\n")
 
 
-
 def menu(palabra, palabra_list, imagenes):
     opc = ("1", "2")
-    dec = input("\n1] Jugar\n2] Salir\n\n")
-    assert dec in opc, "Tiene que ser una de las opciones culiado"
-    if dec == "1":
-        mecanica_principal(palabra, palabra_list, imagenes)
-    elif dec == "2":
-        exit()
+    val = False
+    while val == False:
+        dec = input("\n1] Jugar\n2] Salir\n\n")
+        if dec not in opc:
+            print("Que sea una de las opciones culiado")
+        elif dec == "1":
+            mecanica_principal(palabra, palabra_list, imagenes)
+            val = True
+        elif dec == "2":
+            exit()
 
 
 def run():
