@@ -10,4 +10,8 @@ El pryecto esta finalizado y no creo actualizarlo por el momento.
 
 ## 🖥 Tecnologias utilizadas
 
- - [🐍Python](https://www.python.org/)
+<p align="left">
+   <a href="https://www.python.org/">
+    <img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" alt="Python" height="30" width="30">
+   </a>
+</p>
